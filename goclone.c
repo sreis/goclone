@@ -126,10 +126,7 @@ static void setup_files(goclone_cmd *cmd)
 
         while (1) {
             // Read each element from the directory listing one at a time.
-            if (readdir_r(d, (struct dirent *) &buffer, &results) != 0) {
-                // FIXME: logging?
-                _exit(EX_OSERR);
-            }
+            results = readdir(d);
 
             // NULL here is the end of the directory list.
             if (results == NULL) {
